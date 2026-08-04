@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lynton Sutton — Portfolio</title>
+<style>
+  :root{
+    --bg:#F7F6F2;
+    --card:#FFFFFF;
+    --ink:#1A1A1A;
+    --grey:#5A5A5A;
+    --accent:#1F6F54;
+    --accent-soft:#E7F0EB;
+    --line:#E4E2DB;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  header.hero{padding:88px 0 40px}
+  .eyebrow{color:var(--accent);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:13px;margin-bottom:14px}
+  h1{font-size:clamp(38px,7vw,64px);letter-spacing:.02em;font-weight:800;line-height:1.02}
+  .tag{font-size:clamp(17px,2.4vw,21px);color:var(--accent);font-weight:600;margin-top:10px}
+  .intro{max-width:680px;margin-top:22px;font-size:18px;color:var(--grey)}
+  .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1px solid var(--line);
+    padding:9px 15px;border-radius:999px;text-decoration:none;color:var(--ink);font-size:14px;font-weight:600;transition:.15s}
+  .chip:hover{border-color:var(--accent);color:var(--accent)}
+  .rule{height:1px;background:var(--line);margin:44px 0 0}
+
+  /* SECTION */
+  section{padding:52px 0 8px}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:30px}
+  .sec-head h2{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .sec-head .line{flex:1;height:1px;background:var(--line)}
+
+  /* WORK GRID */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+    display:flex;flex-direction:column;transition:.18s;text-decoration:none;color:inherit}
+  .card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(20,40,30,.10);border-color:#D6D3CA}
+  /* MEDIA: swap the .media div for  <img src="your.jpg" class="media"> or an <iframe class="media">  */
+  .media{aspect-ratio:16/10;width:100%;display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,var(--accent-soft),#DCE9E1);color:var(--accent);
+    font-weight:700;letter-spacing:.04em;font-size:14px;text-align:center;padding:18px;border-bottom:1px solid var(--line)}
+  .card-body{padding:20px 22px 24px}
+  .card-body h3{font-size:19px;margin-bottom:8px}
+  .card-body p{color:var(--grey);font-size:15px}
+  .meta{display:inline-block;margin-top:14px;font-size:12.5px;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent)}
+
+  /* ABOUT */
+  .about{max-width:760px;font-size:18px;color:#333}
+  .about p+p{margin-top:16px}
+
+  /* FACTS */
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px;margin-top:8px}
+  .fact .n{font-size:30px;font-weight:800;color:var(--accent);letter-spacing:.01em}
+  .fact .l{font-size:14px;color:var(--grey);margin-top:2px}
+
+  footer{padding:56px 0 70px;margin-top:40px;border-top:1px solid var(--line);color:var(--grey);font-size:15px}
+  footer a{color:var(--accent);font-weight:600;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="eyebrow">Mechanical Engineer · Founder</div>
+    <h1>Lynton Sutton</h1>
+    <div class="tag">Building AI to fix how the world builds clean-energy infrastructure</div>
+    <p class="intro">
+      Ten years engineering on the world's largest nuclear-fusion project. Now founding
+      an AI company to cut the cost and schedule overruns that slow critical infrastructure.
+    </p>
+    <div class="chips">
+      <!-- swap in your real links -->
+      <a class="chip" href="mailto:lyntonsutton@gmail.com">✉ lyntonsutton@gmail.com</a>
+      <a class="chip" href="https://www.linkedin.com/in/lynton-sutton-944990ba/" target="_blank" rel="noopener">in · LinkedIn</a>
+      <span class="chip">London, UK</span>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section id="work">
+    <div class="sec-head"><h2>Selected Work</h2><span class="line"></span></div>
+    <div class="grid">
+
+      <!-- CARD 1 — make this a link to your demo video: change <div class="card"> to <a class="card" href="VIDEO_URL" target="_blank"> -->
+      <div class="card">
+        <div class="media">
+          <!-- Replace with: <img class="media" src="alfred.jpg" alt="Brigantium AI / Alfred"> or an <iframe class="media" src="YT_EMBED_URL"></iframe> -->
+          Brigantium AI — “Alfred” demo<br><span style="font-weight:500;opacity:.7">[ add screenshot / video ]</span>
+        </div>
+        <div class="card-body">
+          <h3>Brigantium AI — “Alfred”</h3>
+          <p>An AI agent that ingests raw CAD models and auto-generates full 4D construction sequences, then reasons over project documents to flag risks. Built from prototype to beta.</p>
+          <span class="meta">AI · Product Build</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card">
+        <div class="media">
+          ITER 4D Construction Planning<br><span style="font-weight:500;opacity:.7">[ add 4D simulation still ]</span>
+        </div>
+        <div class="card-body">
+          <h3>4D Planning at ITER</h3>
+          <p>Led the rollout of 4D construction planning on the $35bn ITER fusion project, turning CAD and schedule data into site-assembly simulations used to coordinate the worksite.</p>
+          <span class="meta">Fusion · Digital Delivery</span>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="card">
+        <div class="media">
+          Drone Photogrammetry<br><span style="font-weight:500;opacity:.7">[ add 3D worksite render ]</span>
+        </div>
+        <div class="card-body">
+          <h3>Drone 3D Worksite Capture</h3>
+          <p>Built a drone-photogrammetry pipeline that turned the live ITER worksite into a navigable 3D model, letting the team take measurements and inspect remotely.</p>
+          <span class="meta">Reality Capture</span>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="card">
+        <div class="media">
+          VR / 4D Prototypes<br><span style="font-weight:500;opacity:.7">[ add VR prototype clip ]</span>
+        </div>
+        <div class="card-body">
+          <h3>VR Planning Tools · Bentley Systems</h3>
+          <p>Developed immersive VR/4D prototypes with Bentley Systems' Innovation Lab to walk stakeholders through complex assembly sequences before work began.</p>
+          <span class="meta">VR · Innovation</span>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="card">
+        <div class="media">
+          €200m Welding Contract<br><span style="font-weight:500;opacity:.7">[ add engineering visual ]</span>
+        </div>
+        <div class="card-body">
+          <h3>€200m Tokamak Welding — Logistics</h3>
+          <p>Technical project manager for the logistics scope of the €200m Sector Welding contract (ITER × Westinghouse), planning tooling and assembly on a first-of-a-kind machine.</p>
+          <span class="meta">Project Management</span>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="card">
+        <div class="media">
+          Nuclear Robotics<br><span style="font-weight:500;opacity:.7">[ add robotics / CAD image ]</span>
+        </div>
+        <div class="card-body">
+          <h3>£8m & £7m Robotic Systems</h3>
+          <p>Led design, build and commissioning of multi-million-pound robotic remote-handling systems for nuclear decommissioning, owning engineering, procurement and delivery.</p>
+          <span class="meta">Robotics · Engineering</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="sec-head"><h2>About</h2><span class="line"></span></div>
+    <div class="about">
+      <p>I'm a mechanical engineer and founder with over a decade in clean-energy infrastructure, including eight years on the ITER nuclear-fusion project. I've delivered on huge, first-of-a-kind construction, bootstrapped a profitable engineering consultancy, and taught myself to build software so I could attack a problem I kept running into: megaprojects that run late and over budget.</p>
+      <p>I'm now building Brigantium AI, and studying an MSc in Cleantech Innovation at Imperial College London.</p>
+      <div class="facts">
+        <div class="fact"><div class="n">8 yrs</div><div class="l">on the $35bn ITER project</div></div>
+        <div class="fact"><div class="n">€600k+</div><div class="l">consultancy built from scratch</div></div>
+        <div class="fact"><div class="n">€200m</div><div class="l">contract scope managed</div></div>
+        <div class="fact"><div class="n">3</div><div class="l">languages (EN · FR · DE)</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="wrap" style="padding:0">
+      Lynton Sutton · London, UK ·
+      <a href="mailto:lyntonsutton@gmail.com">lyntonsutton@gmail.com</a> ·
+      <a href="https://www.linkedin.com/in/lynton-sutton-944990ba/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
