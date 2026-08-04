@@ -406,9 +406,9 @@ body.work{display:flex;flex-direction:column}
   max-width:880px;
 }
 .plate{margin:0}
-/* The finished build gets the full measure — it spans both columns and lands
-   on its own row, so the sequence resolves on one large plate. */
-.plate--hero{
+/* Spans both columns and lands on its own row — used for the wide context
+   shot and for the finished build, so each gets the full measure. */
+.plate--wide{
   grid-column:1 / -1;
   margin-top:8px;
 }

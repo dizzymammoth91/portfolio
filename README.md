@@ -10,15 +10,16 @@ Design: light "Swiss engineering document" — flat off-white paper, hard rules,
 index.html                 the one-page portfolio
 style.css                  every style, shared by all pages
 media/
-  iter-4d-planning.mp4           work 03, FIG. 01 (~27MB, faststart)
-  iter-4d-sequence.mp4           work 03, FIG. 02 (~45MB, faststart)
-  showstand/                     work 01 gallery — 14 photos (~3.9MB)
+  iter-4d-planning.mp4           work 05, FIG. 01 (~27MB, faststart)
+  iter-4d-sequence.mp4           work 05, FIG. 02 (~45MB, faststart)
+  showstand/                     work 01 — 4 clips + 15 photos (~46MB)
+  hat/                           work 02 — 1 clip + 3 photos (~18MB)
 work/
   brigantium-showstand.html      01
-  brigantium-alfred.html         02
-  iter-4d-planning.html          03
+  water-cooled-hat.html          02
+  brigantium-alfred.html         03
   drone-worksite-capture.html    04
-  vr-planning-bentley.html       05
+  iter-4d-planning.html          05
 ```
 
 Clicking a row in SELECTED WORKS navigates to that work's page. Each work page is deliberately bare: a back control, the work itself, and the footer — nothing else. Real URLs, so they're linkable and bookmarkable.
