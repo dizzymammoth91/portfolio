@@ -10,15 +10,15 @@ Design: light "Swiss engineering document" — flat off-white paper, hard rules,
 index.html                 the one-page portfolio
 style.css                  every style, shared by all pages
 media/
-  iter-4d-planning.mp4           work 02, FIG. 01 (~27MB, faststart)
-  iter-4d-sequence.mp4           work 02, FIG. 02 (~45MB, faststart)
+  iter-4d-planning.mp4           work 03, FIG. 01 (~27MB, faststart)
+  iter-4d-sequence.mp4           work 03, FIG. 02 (~45MB, faststart)
+  showstand/                     work 01 gallery — 14 photos (~3.9MB)
 work/
-  brigantium-alfred.html         01
-  iter-4d-planning.html          02
-  drone-worksite-capture.html    03
-  vr-planning-bentley.html       04
-  tokamak-welding-logistics.html 05
-  robotic-systems.html           06
+  brigantium-showstand.html      01
+  brigantium-alfred.html         02
+  iter-4d-planning.html          03
+  drone-worksite-capture.html    04
+  vr-planning-bentley.html       05
 ```
 
 Clicking a row in SELECTED WORKS navigates to that work's page. Each work page is deliberately bare: a back control, the work itself, and the footer — nothing else. Real URLs, so they're linkable and bookmarkable.
@@ -48,6 +48,20 @@ Everything embedded sits in the same `.fig-frame` plate — hard 1.5px rule, 16:
 **Nira 3D viewer** (work 03) — the Tokamak Pit photogrammetry scan, live and orbitable in the page. `brigantium.nira.app` sends no `X-Frame-Options` and no CSP `frame-ancestors`, so framing is permitted, and the asset loads without authentication. `allow="fullscreen; xr-spatial-tracking"` lets the viewer go fullscreen. A `.fig-link` sits below as a deliberate escape hatch — if the viewer can't start (no WebGL, third-party frames blocked by the visitor), there's still a way through to it.
 
 Note that the embed depends on that asset staying publicly shared in Nira. If its sharing is revoked the frame goes blank, and only the fallback link will hint at what's missing.
+
+### Images
+
+The work 01 gallery (`.plate-grid`) is a two-column grid, one column below 760px. Photos keep their **natural aspect ratio** — the set is 3 landscape and 11 portrait, so forcing a uniform frame would crop the subject out of half of them. Grid order runs left-to-right so the build sequence still reads correctly.
+
+Every `<img>` carries explicit `width`/`height` matching the real file, which reserves the right space and prevents layout shift as images arrive. Everything past the first is `loading="lazy"`.
+
+Source photos were phone-sized (~50MB for 14). The pipeline that produced `media/showstand/`:
+
+```
+ffmpeg -i in.jpg -vf "scale='min(1600,iw)':-2" -q:v 5 -map_metadata -1 out.jpg
+```
+
+**`-map_metadata -1` is not optional.** Two of the originals carried GPS EXIF, which would have published the location they were taken. It strips all metadata. ffmpeg also applies EXIF orientation on decode, which is what turns the stored-landscape files into their true portrait orientation. 49.2MB → 3.9MB.
 
 ### Video
 
@@ -107,7 +121,12 @@ Fields are rule-only, square and transparent, with the underline going to `--ink
 
 Free tier is ~50 submissions/month.
 
-**2. Confirm the work years.** Rows 03–06 are all dated `2015–23`, the ITER window, because per-project years weren't recorded anywhere. Narrow them if you want the YEAR column to carry more signal.
+**2. Confirm the work years.** Two things here:
+
+- Work 01 is dated `2026` — an assumption, not a known fact. It was described only as "July". If the Cleantech Innovation showcase was tied to the MSc (2023–24 per the trajectory), it should read `2024`.
+- Works 03–05 are all dated `2015–23`, the ITER window, because per-project years weren't recorded anywhere. Narrow them if you want the YEAR column to carry more signal.
+
+**2b. Caption the gallery.** The 14 photos have placeholder alt text (`Arcade machine build, stage N`) and numeric captions, because what each frame shows isn't known. Replace both with real descriptions — the alt text is what screen readers announce.
 
 **3. Settle the product naming.** Row 01 and its page say *Brigantium AI — "Alfred"*, carried over from the previous site. The embedded video is titled *4DX — 3 min demo*, and the repos are `4DX` / `4dx-releases`. If 4DX is the public product name, the row title and page should say so.
 

@@ -366,6 +366,73 @@ body.work{display:flex;flex-direction:column}
   border-bottom-color:var(--accent);
 }
 
+/* ---- Pull quote ---- */
+.work-quote{
+  margin:44px 0 0;
+  padding-left:20px;
+  border-left:1.5px solid var(--ink);
+  max-width:640px;
+}
+.work-quote p{
+  margin:0;
+  font:400 20px/1.45 var(--sans);
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+.work-quote cite{
+  display:block;
+  margin-top:12px;
+  font:400 11px var(--mono);
+  letter-spacing:.1em;
+  font-style:normal;
+  color:var(--mono-3);
+}
+
+/* ---- Plate grid ----
+   Photos keep their natural aspect rather than being forced into a uniform
+   frame — the set is a mix of portrait and landscape, and cropping to match
+   would cut the subject out of half of them. Grid order is left-to-right so
+   the build sequence still reads correctly. */
+.plate-grid-label{margin-top:44px}
+/* Sits directly under the meta line rather than after a section, so it needs
+   less air above it. */
+.plate-grid-label--lead{margin-top:32px}
+.plate-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px 24px;
+  align-items:start;
+  margin:44px 0 0;
+  max-width:880px;
+}
+.plate{margin:0}
+/* The finished build gets the full measure — it spans both columns and lands
+   on its own row, so the sequence resolves on one large plate. */
+.plate--hero{
+  grid-column:1 / -1;
+  margin-top:8px;
+}
+.plate img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1.5px solid var(--ink);
+  background:var(--hair);   /* holds the space before the image decodes */
+}
+.plate figcaption{margin-top:10px}
+/* Video plates sit in the same grid as the photos so the two sections share a
+   rhythm. aspect-ratio reserves the box before metadata lands, so the page
+   doesn't jump as each player sizes itself. */
+.plate video{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:9 / 16;
+  border:1.5px solid var(--ink);
+  background:var(--ink);
+  object-fit:contain;
+}
+
 /* ===================== PAGE TRANSITION ===================== */
 /* Cross-document view transitions: the index swipes left to a work page, and
    the work page swipes back right to the index. Direction is fixed per page
@@ -416,6 +483,10 @@ html.nav-back::view-transition-new(root){animation:vt-from-left .42s cubic-bezie
   .work-article{padding-top:48px}
   .work-article .work-text{font-size:16px}
   .figure{margin-top:36px}
+  .plate-grid{grid-template-columns:1fr;gap:28px;margin-top:20px}
+  .plate-grid-label{margin-top:36px}
+  .work-quote{margin-top:36px}
+  .work-quote p{font-size:18px}
 }
 
 /* Keep the display type inside the page on very narrow screens. */
