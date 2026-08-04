@@ -40,9 +40,17 @@ Direction is fixed per page rather than computed: a work page is only ever enter
 
 Supported in Chromium and Safari. Firefox doesn't implement cross-document view transitions yet and simply navigates instantly, which is a clean fallback. `prefers-reduced-motion` disables the slide.
 
-## Video
+## Embeds
 
-Two kinds, both sitting in the same `.fig-frame` plate (hard 1.5px rule, 16:9):
+Everything embedded sits in the same `.fig-frame` plate — hard 1.5px rule, 16:9, square.
+
+**Nira 3D viewer** (work 03) — the Tokamak Pit photogrammetry scan, live and orbitable in the page. `brigantium.nira.app` sends no `X-Frame-Options` and no CSP `frame-ancestors`, so framing is permitted, and the asset loads without authentication. `allow="fullscreen; xr-spatial-tracking"` lets the viewer go fullscreen. A `.fig-link` sits below as a deliberate escape hatch — if the viewer can't start (no WebGL, third-party frames blocked by the visitor), there's still a way through to it.
+
+Note that the embed depends on that asset staying publicly shared in Nira. If its sharing is revoked the frame goes blank, and only the fallback link will hint at what's missing.
+
+### Video
+
+Two kinds, both in the same plate:
 
 - **YouTube** (work 01) — embedded from `youtube-nocookie.com`, YouTube's privacy-enhanced domain, so no tracking cookie is set unless a visitor presses play. `loading="lazy"`, so nothing is fetched until the frame scrolls into view.
 - **Self-hosted** (work 02) — a plain `<video>` pointing at `media/`. **`preload="metadata"` is important**: without it browsers pull the entire file on page load, and this one is ~27MB. It also carries a download-link fallback for browsers that can't decode it.

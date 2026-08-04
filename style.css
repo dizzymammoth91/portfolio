@@ -350,6 +350,21 @@ body.work{display:flex;flex-direction:column}
   object-fit:contain;
   background:var(--ink);
 }
+/* Escape hatch under an embedded viewer: a way through to the source if the
+   frame can't start (no WebGL, third-party frames blocked). */
+.fig-link{
+  display:inline-block;
+  margin-top:14px;
+  font:400 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--mono-2);
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .25s;
+}
+.fig-link:hover{
+  color:var(--ink);
+  border-bottom-color:var(--accent);
+}
 
 /* ===================== PAGE TRANSITION ===================== */
 /* Cross-document view transitions: the index swipes left to a work page, and
