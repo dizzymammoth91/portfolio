@@ -1,0 +1,418 @@
+/* ============================================================
+   Lynton Sutton — Portfolio
+   Shared stylesheet for the index and the work pages.
+   ============================================================ */
+
+/* ===================== TOKENS ===================== */
+:root{
+  --page:#f5f4f1;      /* paper                     */
+  --ink:#17181a;       /* heavy rules, display type */
+  --body:#3c3e42;      /* paragraph text            */
+  --mono-2:#5a5c60;    /* secondary mono            */
+  --mono-3:#8e8f92;    /* faint mono/labels         */
+  --hair:#c9c8c3;      /* hairline rules            */
+  --accent:#3672d9;    /* contact underline; oklch upgrade below */
+  --gutter:48px;
+  --sans:'Archivo',sans-serif;
+  --display:'Archivo Black',sans-serif;
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@supports (color: oklch(0.55 0.17 250)){
+  :root{ --accent:oklch(0.55 0.17 250); }
+}
+
+/* ===================== BASE ===================== */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:var(--sans);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+section{scroll-margin-top:24px}
+
+/* Shared mono label: 10px, .14em, faint */
+.label{
+  font:500 10px var(--mono);
+  letter-spacing:.14em;
+  color:var(--mono-3);
+}
+
+/* Keyboard focus — hover is the design's only stated state, but focus must
+   be visible for anyone not using a mouse. */
+a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+}
+
+/* ===================== HEADER ===================== */
+.site-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:24px;
+  padding:18px var(--gutter);
+  border-bottom:1.5px solid var(--ink);
+  font:500 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--mono-2);
+}
+.site-head nav{display:flex;gap:20px}
+.site-head nav a{color:var(--mono-2);transition:color .2s}
+.site-head nav a:hover{color:var(--ink)}
+
+/* ===================== HERO ===================== */
+.hero{
+  padding:100px var(--gutter) 80px;
+  border-bottom:1px solid var(--hair);
+}
+.hero h1{
+  margin:0;
+  font:400 clamp(72px,10.5vw,148px)/0.95 var(--display);
+  letter-spacing:-.02em;
+  text-transform:uppercase;
+}
+.hero h1 span{display:block}
+/* Second line is hollow until hovered. Guarded so it never renders invisible
+   where text-stroke is unsupported. */
+@supports (-webkit-text-stroke: 1.5px currentColor){
+  .hero .hollow{
+    color:transparent;
+    -webkit-text-stroke:1.5px var(--ink);
+    transition:color .4s;
+    cursor:default;
+  }
+  .hero .hollow:hover{color:var(--ink)}
+}
+
+.intro{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  margin-top:64px;
+  max-width:880px;
+  border-top:1.5px solid var(--ink);
+  padding-top:20px;
+}
+.intro > div{display:flex;flex-direction:column;gap:10px}
+.intro p{
+  margin:0;
+  font:400 16px/1.55 var(--sans);
+  color:var(--body);
+}
+
+/* ===================== WORKS INDEX ===================== */
+.works{padding:56px var(--gutter) 0}
+.works .kicker{margin-bottom:24px}
+
+.work-head,
+.work-row{
+  display:grid;
+  grid-template-columns:56px 1fr 220px 72px;
+  gap:16px;
+}
+.work-head{
+  padding-bottom:10px;
+  border-bottom:1.5px solid var(--ink);
+}
+.work-head .w-year{text-align:right}
+
+.work-row{
+  align-items:baseline;
+  padding:24px 12px;
+  /* Pull the hover plate 12px past the text grid while the columns stay
+     aligned with the header above. */
+  margin:0 -12px;
+  border-bottom:1px solid var(--hair);
+  cursor:pointer;
+  transition:background .25s,color .25s;
+}
+/* The whole row inverts. Cells carry opacity rather than fixed greys so they
+   read correctly against both the paper and the ink plate. */
+.work-row:hover{
+  background:var(--ink);
+  color:var(--page);
+}
+.w-no   {font:400 12px var(--mono);opacity:.55}
+.w-title{font:600 21px var(--sans);letter-spacing:-.01em}
+.w-domain{font:400 11px var(--mono);opacity:.7}
+.w-year {font:400 12px var(--mono);opacity:.55;text-align:right}
+
+/* ===================== TRAJECTORY ===================== */
+.trajectory,
+.contact{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:48px;
+}
+.trajectory{
+  padding:64px var(--gutter);
+  border-bottom:1px solid var(--hair);
+}
+.traj-list{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  font:400 15px var(--sans);
+  color:var(--body);
+  max-width:640px;
+}
+.traj-list > div{display:flex;gap:20px;align-items:baseline}
+.traj-list .date{
+  font:400 11px var(--mono);
+  color:var(--mono-3);
+  width:84px;
+  flex:none;
+}
+.traj-list .date.now{color:var(--ink)}
+
+/* ===================== CONTACT ===================== */
+.contact{padding:64px var(--gutter) 88px}
+.contact-lines{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:32px;
+}
+/* Carries the display-type moment the mailto link used to hold, so the
+   section keeps its typographic anchor. */
+.contact-lede{
+  margin:0;
+  font:700 clamp(24px,3.2vw,40px) var(--sans);
+  letter-spacing:-.02em;
+  color:var(--ink);
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  width:100%;
+  max-width:520px;
+}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{display:block}
+
+/* Flat, square, rule-only fields — no boxes, in keeping with the document
+   aesthetic. Form controls don't inherit type, so restate it. */
+.contact-form input[type=text],
+.contact-form input[type=email],
+.contact-form textarea{
+  font:400 16px/1.5 var(--sans);
+  color:var(--ink);
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--hair);
+  border-radius:0;
+  padding:6px 0 10px;
+  width:100%;
+  transition:border-color .25s;
+  -webkit-appearance:none;
+  appearance:none;
+}
+.contact-form textarea{resize:vertical;min-height:96px}
+.contact-form input:hover,
+.contact-form textarea:hover{border-bottom-color:var(--mono-3)}
+.contact-form input:focus,
+.contact-form textarea:focus{
+  outline:none;
+  border-bottom-color:var(--ink);
+}
+/* Honeypot — off-screen rather than display:none so bots still fill it. */
+.contact-form input[name="_gotcha"]{
+  position:absolute;
+  left:-9999px;
+  width:1px;
+  height:1px;
+  opacity:0;
+}
+
+.send{
+  align-self:flex-start;
+  font:500 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--page);
+  background:var(--ink);
+  border:none;
+  border-radius:0;
+  padding:15px 28px;
+  cursor:pointer;
+  transition:background .25s;
+}
+.send:hover{background:var(--accent)}
+.send:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.contact-meta{
+  display:flex;
+  align-items:baseline;
+  gap:24px;
+  flex-wrap:wrap;
+  font:400 11px var(--mono);
+  letter-spacing:.1em;
+}
+.contact-meta .ext{
+  color:var(--mono-2);
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .25s;
+}
+.contact-meta .ext:hover{
+  color:var(--ink);
+  border-bottom-color:var(--accent);
+}
+.contact-meta .place{color:var(--mono-3)}
+
+/* ===================== FOOTER ===================== */
+.site-foot{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  padding:20px var(--gutter);
+  border-top:1.5px solid var(--ink);
+  font:500 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--mono-2);
+}
+.site-foot .year{color:var(--mono-3)}
+
+/* ===================== WORK PAGE ===================== */
+/* Deliberately bare: a back control, the work itself, and the footer. */
+body.work{display:flex;flex-direction:column}
+.work-page{
+  flex:1;
+  padding:28px var(--gutter) 96px;
+}
+
+.back{
+  display:inline-flex;
+  align-items:baseline;
+  gap:10px;
+  font:500 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--mono-2);
+  transition:color .2s;
+}
+.back:hover{color:var(--ink)}
+.back .arrow{
+  display:inline-block;
+  transition:transform .2s;
+}
+.back:hover .arrow{transform:translateX(-4px)}
+
+.work-article{max-width:880px;padding-top:72px}
+.work-article .w-index{display:block;margin-bottom:18px}
+.work-article h1{
+  margin:0;
+  font:700 clamp(32px,4.6vw,56px)/1.05 var(--sans);
+  letter-spacing:-.02em;
+}
+.work-article .work-meta{
+  margin-top:16px;
+  font:400 11px var(--mono);
+  letter-spacing:.1em;
+  color:var(--mono-3);
+}
+.work-article .work-text{
+  margin:32px 0 0;
+  padding-top:28px;
+  border-top:1.5px solid var(--ink);
+  font:400 17px/1.6 var(--sans);
+  color:var(--body);
+  max-width:640px;
+}
+
+/* ---- Figure plate ---- */
+.figure{
+  margin:44px 0 0;
+  padding:0;
+  max-width:880px;
+}
+.fig-label{margin-bottom:14px}
+.fig-frame{
+  aspect-ratio:16 / 9;
+  width:100%;
+  border:1.5px solid var(--ink);
+  background:var(--ink);    /* fills the letterbox before the player paints */
+}
+.fig-frame iframe,
+.fig-frame video{
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+}
+/* Self-hosted clips are letterboxed rather than cropped — a 4D sequence
+   shouldn't have its edges cut off to fill the frame. */
+.fig-frame video{
+  object-fit:contain;
+  background:var(--ink);
+}
+
+/* ===================== PAGE TRANSITION ===================== */
+/* Cross-document view transitions: the index swipes left to a work page, and
+   the work page swipes back right to the index. Direction is fixed per page
+   because a work page is only ever entered going forward and the index only
+   ever going back — so no scripting is needed to work out which way.
+   Unsupported browsers simply navigate instantly. */
+@view-transition{navigation:auto}
+
+@keyframes vt-from-right{from{transform:translateX(100%)}}
+@keyframes vt-to-left   {to  {transform:translateX(-25%)}}
+@keyframes vt-from-left {from{transform:translateX(-25%)}}
+@keyframes vt-to-right  {to  {transform:translateX(100%)}}
+
+html.nav-fwd::view-transition-old(root){animation:vt-to-left    .42s cubic-bezier(.4,0,.2,1) both}
+html.nav-fwd::view-transition-new(root){animation:vt-from-right .42s cubic-bezier(.4,0,.2,1) both}
+html.nav-back::view-transition-old(root){animation:vt-to-right  .42s cubic-bezier(.4,0,.2,1) both}
+html.nav-back::view-transition-new(root){animation:vt-from-left .42s cubic-bezier(.4,0,.2,1) both}
+
+/* ===================== RESPONSIVE ===================== */
+/* Design was validated at desktop widths. Below 760px the fixed works columns
+   stop working, so each row folds to two lines:
+     NO. + WORK  /  DOMAIN + YEAR                                          */
+@media (max-width:760px){
+  :root{--gutter:24px}
+
+  .hero{padding:64px var(--gutter) 56px}
+  .intro{grid-template-columns:1fr;gap:28px;margin-top:44px}
+
+  .work-head{display:none}
+  .work-row{
+    grid-template-columns:44px 1fr auto;
+    gap:8px 16px;
+    align-items:baseline;
+    padding:20px 12px;
+  }
+  .w-no    {grid-column:1;grid-row:1}
+  .w-title {grid-column:2 / 4;grid-row:1;font-size:19px}
+  .w-domain{grid-column:2;grid-row:2}
+  .w-year  {grid-column:3;grid-row:2}
+
+  .trajectory,
+  .contact{grid-template-columns:1fr;gap:20px}
+  .trajectory{padding:48px var(--gutter)}
+  .contact{padding:48px var(--gutter) 64px}
+  .traj-list > div{gap:14px}
+
+  .work-page{padding:24px var(--gutter) 64px}
+  .work-article{padding-top:48px}
+  .work-article .work-text{font-size:16px}
+  .figure{margin-top:36px}
+}
+
+/* Keep the display type inside the page on very narrow screens. */
+@media (max-width:420px){
+  .hero h1{font-size:clamp(52px,15vw,72px)}
+  .site-head{gap:12px;flex-wrap:wrap}
+  .site-head nav{gap:14px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms !important}
+  ::view-transition-old(root),
+  ::view-transition-new(root){animation:none !important}
+}
