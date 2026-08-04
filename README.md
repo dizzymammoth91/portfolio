@@ -10,7 +10,8 @@ Design: light "Swiss engineering document" — flat off-white paper, hard rules,
 index.html                 the one-page portfolio
 style.css                  every style, shared by all pages
 media/
-  iter-4d-planning.mp4           self-hosted clip for work 02 (~27MB)
+  iter-4d-planning.mp4           work 02, FIG. 01 (~27MB, faststart)
+  iter-4d-sequence.mp4           work 02, FIG. 02 (~45MB, faststart)
 work/
   brigantium-alfred.html         01
   iter-4d-planning.html          02
@@ -53,7 +54,15 @@ Note that the embed depends on that asset staying publicly shared in Nira. If it
 Two kinds, both in the same plate:
 
 - **YouTube** (work 01) — embedded from `youtube-nocookie.com`, YouTube's privacy-enhanced domain, so no tracking cookie is set unless a visitor presses play. `loading="lazy"`, so nothing is fetched until the frame scrolls into view.
-- **Self-hosted** (work 02) — a plain `<video>` pointing at `media/`. **`preload="metadata"` is important**: without it browsers pull the entire file on page load, and this one is ~27MB. It also carries a download-link fallback for browsers that can't decode it.
+- **Self-hosted** (work 02, two clips) — plain `<video>` pointing at `media/`. **`preload="metadata"` is important**: without it browsers pull the entire file on page load, and these are ~27MB and ~45MB. Both carry a download-link fallback for browsers that can't decode them.
+
+Both clips are faststart-remuxed — `moov` sits at byte 36, ahead of `mdat`, so playback begins as soon as the first chunk arrives instead of waiting on the whole file. Keep it that way for anything you add. Editors generally don't expose the option, so remux after exporting:
+
+```
+ffmpeg -i export.mp4 -c copy -movflags +faststart out.mp4
+```
+
+`-c copy` is a stream copy — no re-encode, so no quality cost, and it takes seconds.
 
 Self-hosted clips are `object-fit: contain`, so a 4D sequence is letterboxed rather than cropped.
 
