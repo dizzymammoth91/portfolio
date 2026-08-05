@@ -17,7 +17,7 @@ media/
 work/
   brigantium-showstand.html      01
   water-cooled-hat.html          02
-  brigantium-alfred.html         03
+  4dx-alfred.html                03
   drone-worksite-capture.html    04
   iter-4d-planning.html          05
 ```
@@ -129,9 +129,9 @@ Free tier is ~50 submissions/month.
 
 **2b. Caption the gallery.** The 14 photos have placeholder alt text (`Arcade machine build, stage N`) and numeric captions, because what each frame shows isn't known. Replace both with real descriptions — the alt text is what screen readers announce.
 
-**3. Settle the product naming.** Row 01 and its page say *Brigantium AI — "Alfred"*, carried over from the previous site. The embedded video is titled *4DX — 3 min demo*, and the repos are `4DX` / `4dx-releases`. If 4DX is the public product name, the row title and page should say so.
+**3. Reconcile the TRAJECTORY section.** The works list and the trajectory now tell different stories. Trajectory reads `2015—23 Nuclear fusion` and `2023—24 MSc Cleantech Innovation`, both inherited from the design handoff — but work 05 dates the ITER work to 2019–2025 and work 02 dates the cleantech course to 2025. The hero line "Eight years in nuclear fusion" and the page `<meta name="description">` carry the same assumption. All three need the real dates.
 
-**4. Fill out the work pages.** Each currently carries one paragraph. They have room for images, figures, and longer write-ups — copy the `<figure class="figure">` block from `work/brigantium-alfred.html` as a starting point.
+**4. Fill out the work pages.** Each currently carries one paragraph. They have room for images, figures, and longer write-ups — copy the `<figure class="figure">` block from `work/4dx-alfred.html` as a starting point.
 
 **5. Footer year.** All pages read `© 2026`, matching the design handoff and the current year. Change it in all seven files if you want a different one.
 
