@@ -114,13 +114,15 @@ Fields are rule-only, square and transparent, with the underline going to `--ink
 
 ## To finish
 
-**1. Connect the contact form.** This is the only step that blocks launch — until it's done the form silently fails.
+**1. ~~Connect the contact form.~~** Done — the form posts to `https://formspree.io/f/xnpaqawo`. Free tier is ~50 submissions/month.
 
-1. Sign up at [formspree.io](https://formspree.io) and create a new form.
-2. It gives you an endpoint like `https://formspree.io/f/abcdwxyz` — copy the ID off the end.
-3. In `index.html`, replace `YOUR_FORM_ID` in the form's `action` attribute.
+Optional refinement: submitting currently sends the visitor to Formspree's own thank-you page, off this domain. A hidden `_next` field keeps them here instead:
 
-Free tier is ~50 submissions/month.
+```html
+<input type="hidden" name="_next" value="https://dizzymammoth91.github.io/portfolio/thanks.html">
+```
+
+That needs a `thanks.html` to exist. The alternative — staying on the page via AJAX — would mean loading Formspree's script, which trades away the site's zero-JavaScript property for one form.
 
 **2. Confirm the work years.** Two things here:
 

@@ -109,16 +109,14 @@
     <div class="contact-lines">
       <p class="contact-lede">Get in touch.</p>
 
-      <!-- ============================================================
-           SETUP REQUIRED — replace YOUR_FORM_ID below.
-           1. Sign up at https://formspree.io and create a new form.
-           2. Copy the form ID from the endpoint it gives you
-              (https://formspree.io/f/XXXXXXXX  →  XXXXXXXX).
-           3. Paste it over YOUR_FORM_ID in the action attribute.
-           Your address lives in the Formspree dashboard, never in this
-           page's source. Until the ID is set, the form will not send.
-           ============================================================ -->
-      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <!-- Plain HTML POST to Formspree — no script, so the page stays
+           zero-JavaScript. The destination address lives in the Formspree
+           dashboard and never appears in this page's source.
+           _next must be an absolute URL; it keeps the visitor on this domain
+           after submitting instead of landing on formspree.io. Update it if
+           the site ever moves to a custom domain. -->
+      <form class="contact-form" action="https://formspree.io/f/xnpaqawo" method="POST">
+        <input type="hidden" name="_next" value="https://dizzymammoth91.github.io/portfolio/thanks.html">
         <input type="hidden" name="_subject" value="Portfolio enquiry">
         <!-- Spam honeypot: hidden from people, tempting to bots. -->
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
