@@ -5,7 +5,7 @@
 
 /* ===================== TOKENS ===================== */
 :root{
-  --page:#f5f4f1;      /* paper                     */
+  --page:#fdfdfd;      /* paper                     */
   --ink:#17181a;       /* heavy rules, display type */
   --body:#3c3e42;      /* paragraph text            */
   --mono-2:#5a5c60;    /* secondary mono            */
@@ -70,11 +70,34 @@ a:focus-visible{
   padding:100px var(--gutter) 80px;
   border-bottom:1px solid var(--hair);
 }
+/* Name left, artwork pushed to the right edge — the rule below runs the full
+   width, so the art sitting at the far margin keeps the band feeling edge to
+   edge rather than centred. Bottom-aligned, then the art is dropped below
+   that baseline by its negative margin. */
+.hero-top{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:48px;
+}
 .hero h1{
   margin:0;
   font:400 clamp(72px,10.5vw,148px)/0.95 var(--display);
   letter-spacing:-.02em;
   text-transform:uppercase;
+}
+.hero-art{
+  flex:none;
+  /* Capped so the machine's top stays clear of the header rule — it's taller
+     than the name, and it hangs below, so height grows upward. */
+  width:clamp(195px,24vw,360px);
+  height:auto;
+  /* Drops the machine below the name's baseline rather than sitting flush
+     with it. Negative margin so the row shrinks by the same amount and the
+     intro block below doesn't get pushed down. The intro's margin-top is
+     raised to match, keeping the gap under the machine constant. */
+  margin-bottom:-56px;
+  /* Transparent PNG, so it sits straight on the paper with no plate. */
 }
 .hero h1 span{display:block}
 /* Second line is hollow until hovered. Guarded so it never renders invisible
@@ -93,7 +116,9 @@ a:focus-visible{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:48px;
-  margin-top:64px;
+  /* 64px in the design; raised by the same 20px the artwork now hangs lower,
+     so the space under the machine stays as it was. */
+  margin-top:84px;
   max-width:880px;
   border-top:1.5px solid var(--ink);
   padding-top:20px;
@@ -459,6 +484,9 @@ html.nav-back::view-transition-new(root){animation:vt-from-left .42s cubic-bezie
   :root{--gutter:24px}
 
   .hero{padding:64px var(--gutter) 56px}
+  /* No room for the art beside the name at this width — stack it under. */
+  .hero-top{flex-direction:column;align-items:flex-start;gap:28px}
+  .hero-art{width:min(275px,58vw)}
   .intro{grid-template-columns:1fr;gap:28px;margin-top:44px}
 
   .work-head{display:none}
