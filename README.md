@@ -131,7 +131,7 @@ That needs a `thanks.html` to exist. The alternative — staying on the page via
 
 **2b. Caption the gallery.** The 14 photos have placeholder alt text (`Arcade machine build, stage N`) and numeric captions, because what each frame shows isn't known. Replace both with real descriptions — the alt text is what screen readers announce.
 
-**3. Reconcile the TRAJECTORY section.** The works list and the trajectory now tell different stories. Trajectory reads `2015—23 Nuclear fusion` and `2023—24 MSc Cleantech Innovation`, both inherited from the design handoff — but work 05 dates the ITER work to 2019–2025 and work 02 dates the cleantech course to 2025. The hero line "Eight years in nuclear fusion" and the page `<meta name="description">` carry the same assumption. All three need the real dates.
+**3. Check the BEng line in TRAJECTORY.** It reads `2011—15 BEng Mechanical Engineering`, inherited from the design handoff. Per the CV that period is really two things: a Diploma in Engineering 2011–12, then the BEng 2012–15, both at Oxford Brookes. Either split it into two rows or shorten it to `2012—15`.
 
 **4. Fill out the work pages.** Each currently carries one paragraph. They have room for images, figures, and longer write-ups — copy the `<figure class="figure">` block from `work/4dx-alfred.html` as a starting point.
 
