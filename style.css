@@ -97,6 +97,8 @@ a:focus-visible{
      intro block below doesn't get pushed down. The intro's margin-top is
      raised to match, keeping the gap under the machine constant. */
   margin-bottom:-56px;
+  /* Pulls it in off the right gutter rather than sitting hard against it. */
+  margin-right:64px;
   /* Transparent PNG, so it sits straight on the paper with no plate. */
 }
 .hero h1 span{display:block}
