@@ -87,6 +87,7 @@ a:focus-visible{
   text-transform:uppercase;
 }
 .hero-art{
+  display:block;
   flex:none;
   /* Capped so the machine's top stays clear of the header rule — it's taller
      than the name, and it hangs below, so height grows upward. */
@@ -100,7 +101,19 @@ a:focus-visible{
   /* Pulls it in off the right gutter rather than sitting hard against it. */
   margin-right:64px;
   /* Transparent PNG, so it sits straight on the paper with no plate. */
+  transition:filter .3s;
 }
+.hero-art img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+/* Inverts on hover, echoing the works rows flipping to an ink plate. The
+   alpha channel is untouched by invert(), so only the drawing flips — the
+   backdrop stays transparent and the paper still shows through. Focus gets
+   the same treatment so it's reachable by keyboard, not just by mouse. */
+.hero-art:hover,
+.hero-art:focus-visible{filter:invert(1)}
 .hero h1 span{display:block}
 /* Second line is hollow until hovered. Guarded so it never renders invisible
    where text-stroke is unsupported. */
